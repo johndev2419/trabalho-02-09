@@ -1,0 +1,184 @@
+let titulos = [
+    "O Senhor dos Anéis",
+    "Dom Casmurro",
+    "Pai Rico, Pai Pobre",
+    "Clean Code",
+    "JavaScript: The Good Parts",
+    "Orgulho e Preconceito",
+    "JavaScript Moderno e Profissional"
+];
+let anosDePublicacao = [1954, 1899, 1997, 2008, 2008, 1813, 2021];
+let editoras = ["Martins Fontes", "Editora Globo", "Alta Books", "Prentice Hall", "O'Reilly", "Penguin", "Casa do Código"];
+let numerosDePaginas = [1178, 256, 207, 464, 176, 432, 380];
+let precos = [120.00, 35.00, 40.00, 75.00, 60.00, 30.00, 99.90];
+let categorias = ["Ficção", "Romance", "Financeiro", "Tecnologia", "Tecnologia", "Romance", "Tecnologia"];
+
+// CADASTRAR LIVRO
+function cadastrarLivro() {
+    let titulo = prompt("Título do livro:");
+    let ano = parseInt(prompt("Ano de publicação:"));
+    let editora = prompt("Editora:");
+    let paginas = parseInt(prompt("Número de páginas:"));
+    let preco = parseFloat(prompt("Preço do livro:"));
+    let categoria = prompt("Categoria (Ficção, Romance, etc):");
+
+    titulos.push(titulo);
+    anosDePublicacao.push(ano);
+    editoras.push(editora);
+    numerosDePaginas.push(paginas);
+    precos.push(preco);
+    categorias.push(categoria);
+
+    alert(`Livro "${titulo}" cadastrado com sucesso!`);
+}
+
+// 1. Listar livros da categoria Ficção
+function listarFiccao() {
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (categorias[i] === "Ficção") {
+            resultado.push(titulos[i]);
+        }
+    }
+    alert("Livros de Ficção:\n" + resultado.join("\n"));
+}
+
+// 2. Listar livros publicados a partir de 2010
+function listarLivrosApos2010() {
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (anosDePublicacao[i] >= 2010) {
+            resultado.push(titulos[i]);
+        }
+    }
+    alert("Livros publicados a partir de 2010:\n" + resultado.join("\n"));
+}
+
+// 3. Listar livros por editora (via prompt)
+function listarPorEditora() {
+    let editoraBusca = prompt("Informe o nome da editora:");
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (editoras[i].toLowerCase() === editoraBusca.toLowerCase()) {
+            resultado.push(titulos[i]);
+        }
+    }
+    alert(`Livros da editora ${editoraBusca}:\n` + resultado.join("\n"));
+}
+
+// 4. Livros com mais de 300 páginas
+function listarMaisDe300Paginas() {
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (numerosDePaginas[i] > 300) {
+            resultado.push(titulos[i]);
+        }
+    }
+    alert("Livros com mais de 300 páginas:\n" + resultado.join("\n"));
+}
+
+// 5. Livro com maior número de páginas
+function livroMaisPaginas() {
+    let max = 0;
+    let livro = "";
+    for (let i = 0; i < numerosDePaginas.length; i++) {
+        if (numerosDePaginas[i] > max) {
+            max = numerosDePaginas[i];
+            livro = titulos[i];
+        }
+    }
+    alert(`Livro com mais páginas: ${livro} (${max} páginas)`);
+}
+
+// 6. Livro com menor número de páginas
+function livroMenosPaginas() {
+    let min = Infinity;
+    let livro = "";
+    for (let i = 0; i < numerosDePaginas.length; i++) {
+        if (numerosDePaginas[i] < min) {
+            min = numerosDePaginas[i];
+            livro = titulos[i];
+        }
+    }
+    alert(`Livro com menos páginas: ${livro} (${min} páginas)`);
+}
+
+// 7. Média de páginas dos livros
+function mediaPaginas() {
+    let total = 0;
+    for (let i = 0; i < numerosDePaginas.length; i++) {
+        total += numerosDePaginas[i];
+    }
+    let media = total / numerosDePaginas.length;
+    alert(`Média de páginas: ${media.toFixed(2)}`);
+}
+
+// 8. Títulos com mais de 30 caracteres
+function titulosLongos() {
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (titulos[i].length > 30) {
+            resultado.push(titulos[i]);
+        }
+    }
+    alert("Títulos com mais de 30 caracteres:\n" + resultado.join("\n"));
+}
+
+// 9. Livro mais caro
+function livroMaisCaro() {
+    let maxPreco = 0;
+    let livro = "";
+    for (let i = 0; i < precos.length; i++) {
+        if (precos[i] > maxPreco) {
+            maxPreco = precos[i];
+            livro = titulos[i];
+        }
+    }
+    alert(`Livro mais caro: ${livro} - R$${maxPreco.toFixed(2).replace(".", ",")}`);
+}
+
+// 10. Livro mais barato
+function livroMaisBarato() {
+    let minPreco = Infinity;
+    let livro = "";
+    for (let i = 0; i < precos.length; i++) {
+        if (precos[i] < minPreco) {
+            minPreco = precos[i];
+            livro = titulos[i];
+        }
+    }
+    alert(`Livro mais barato: ${livro} - R$${minPreco.toFixed(2).replace(".", ",")}`);
+}
+
+// 11. Lista com títulos e preços de livros da categoria Tecnologia
+function listaTecnologia() {
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (categorias[i] === "Tecnologia") {
+            resultado.push(`${titulos[i]} - R$${precos[i].toFixed(2)}`);
+        }
+    }
+    alert("Livros de Tecnologia:\n" + resultado.join("\n"));
+}
+
+// 12. Lista com títulos e anos da categoria Romance
+function listaRomance() {
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (categorias[i] === "Romance") {
+            resultado.push(`${titulos[i]} - ${anosDePublicacao[i]}`);
+        }
+    }
+    alert("Livros de Romance:\n" + resultado.join("\n"));
+}
+
+// 13. Livros com "JavaScript" no título
+function livrosComJavaScript() {
+    let resultado = [];
+    for (let i = 0; i < titulos.length; i++) {
+        if (titulos[i].toLowerCase().includes("javascript")) {
+            resultado.push(titulos[i]);
+        }
+    }
+    alert("Livros com 'JavaScript' no título:\n" + resultado.join("\n"));
+}
