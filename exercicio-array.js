@@ -10,7 +10,7 @@
 // - Listar o livro com maior número de páginas
 // - Listar o livro com menor número de páginas
 // - Listar a média de páginas dos livros cadastrados
-// - Listar todos os livros cujo título possua mais de 30 caracteres
+// - Listar todos os livros cujo título possua mais de 30 caractere
 // - Listar o livro mais caro
 // - Listar o livro mais barato
 // - Criar uma lista com os títulos e preços dos livros da categoria Tecnologia
